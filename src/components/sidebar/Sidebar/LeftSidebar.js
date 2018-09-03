@@ -42,7 +42,7 @@
 
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Icon, Menu, Sidebar } from "semantic-ui-react";
+import { Icon, Menu } from "semantic-ui-react";
 
 const LeftSidebar = () => (
   <Menu vertical floated="right">

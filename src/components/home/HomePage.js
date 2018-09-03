@@ -1,16 +1,8 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Sidebar,
-  Grid,
-  Rail,
-  Segment,
-  Container
-} from "semantic-ui-react";
-import firebase from "firebase/app";
+import { Grid, Container } from "semantic-ui-react";
 import QuestActivity from "../quests/QuestActivity/QuestActivity";
-import LeftSidebar from "../sidebar/Sidebar/LeftSidebar";
-import Equipment from "../equipment/Equipment/Equipment";
+// import LeftSidebar from "../sidebar/Sidebar/LeftSidebar";
+import EquipmentDashboard from "../equipment/Equipment/EquipmentDashboard";
 
 const quests = [
   {
@@ -65,8 +57,8 @@ class HomePage extends Component {
               <QuestActivity quests={quests} />
             </Grid.Column>
             <Grid.Column floated="right" width={3}>
-              <Equipment />
               <QuestActivity quests={quests} />
+              <EquipmentDashboard />
             </Grid.Column>
           </Grid.Row>
         </Grid>

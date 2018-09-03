@@ -252,8 +252,6 @@ class Test extends React.Component {
   };
 
   render() {
-    const sidebarContent = <LeftSidebar />;
-
     return (
       <Sidebar docked pullRight>
         <LeftSidebar />

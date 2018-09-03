@@ -7,7 +7,7 @@ import TextInput from "../../../common/TextInput";
 import SelectInput from "../../../common/SelectInput";
 import TextArea from "../../../common/TextArea";
 
-const { Segment, Header, Label } = Semantic;
+const { Segment } = Semantic;
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const onSubmit = async values => {

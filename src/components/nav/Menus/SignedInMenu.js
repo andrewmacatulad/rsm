@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 
 const SignedInMenu = ({ signOut, auth }) => {
   return (
-    <Menu.Item position="right">
+    <Menu.Item>
       <Image
         avatar
         spaced="right"
         src={
-          auth.photoURL ||
+          auth.user.profilePicture ||
           "https://pbs.twimg.com/profile_images/1000303810642837504/LQmBgJmU_400x400.jpg"
         }
       />
-      <Dropdown pointing="top left" text={auth.email}>
+      <Dropdown pointing="top left" text={auth.user.email}>
         <Dropdown.Menu>
           <Dropdown.Item text="Create Event" icon="plus" />
           <Dropdown.Item text="My Events" icon="calendar" />

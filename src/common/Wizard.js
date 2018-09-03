@@ -6,7 +6,7 @@ import { Form } from "react-final-form";
 import Steps from "rc-steps";
 import * as Semantic from "semantic-ui-react";
 
-const { Form: SemanticForm, Button, Icon, Label } = Semantic;
+const { Form: SemanticForm, Button, Icon } = Semantic;
 
 export default class Wizard extends React.Component {
   static propTypes = {
