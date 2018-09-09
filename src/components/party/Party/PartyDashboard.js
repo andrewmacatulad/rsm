@@ -18,11 +18,14 @@ class PartyDashboard extends Component {
     this.props.deleteParty(partyId);
   };
   render() {
-    const { loading, parties } = this.props;
+    const { loading, parties, profile } = this.props;
     if (loading) {
       return <LoadingComponent />;
     }
-    console.log(parties);
+
+    // parties.partyMembers.map(party => {
+    //   console.log(party);
+    // });
     return (
       <div>
         <Button
@@ -33,6 +36,7 @@ class PartyDashboard extends Component {
         />
         <h1>Party Dashboard</h1>
         <PartyList
+          profile={profile}
           parties={parties}
           loading={loading}
           deleteParty={this.deleteParty}

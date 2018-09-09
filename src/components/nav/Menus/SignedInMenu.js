@@ -13,7 +13,7 @@ const SignedInMenu = ({ signOut, auth }) => {
           "https://pbs.twimg.com/profile_images/1000303810642837504/LQmBgJmU_400x400.jpg"
         }
       />
-      <Dropdown pointing="top left" text={auth.user.email}>
+      <Dropdown pointing="top left" text={auth.user.name}>
         <Dropdown.Menu>
           <Dropdown.Item text="Create Event" icon="plus" />
           <Dropdown.Item text="My Events" icon="calendar" />

@@ -5,7 +5,6 @@ import { Container } from "semantic-ui-react";
 
 import NavBar from "../components/nav/NavBar/NavBar";
 import HomePage from "../components/home/HomePage";
-import Friends from "../components/friends/Friends";
 import SettingsDashboard from "../components/user/Settings/SettingsDashboard";
 import QuestDashboard from "../components/quests/QuestDashboard/QuestDashboard";
 // import LeftSidebar from "../components/sidebar/Sidebar/LeftSidebar";
@@ -27,6 +26,7 @@ import {
 import Test from "./Test";
 import LevelChecker from "./LevelChecker";
 import PartyDashboard from "../components/party/Party/PartyDashboard";
+import FriendsDashboard from "../components/friends/Friends/FriendsDashboard";
 
 class App extends Component {
   // state = { visible: false };
@@ -61,7 +61,7 @@ class App extends Component {
         <Container>
           <Switch>
             <Route exact path="/test" component={LevelChecker} />
-            <Route path="/friends" component={Friends} />
+            <Route path="/friends" component={FriendsDashboard} />
             <Route path="/settings" component={SettingsDashboard} />
             <Route path="/quests" component={QuestDashboard} />
             <Route

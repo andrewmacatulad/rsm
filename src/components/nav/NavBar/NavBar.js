@@ -35,6 +35,7 @@ class NavBar extends Component {
             <Menu.Item disabled name="Equipment" />
           )}
           <Menu.Item as={NavLink} to="/party" name="Party" />
+          <Menu.Item as={NavLink} to="/friends" name="Friends" />
           <Menu.Item as={NavLink} to="/quests" name="Quests" />
 
           <Menu.Item as={NavLink} to="/settings" name="Settings" />
