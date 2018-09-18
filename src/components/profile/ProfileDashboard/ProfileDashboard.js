@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import ProfileDetailedHeader from "../ProfileDetailed/ProfileDetailedHeader";
 import LoadingComponent from "../../../layout/LoadingComponent";
 import { addExp } from "../../../auth/authActions";
+import { openModal } from "../../modals/modalActions";
 
 const mapStateToProps = ({ auth }) => {
   return {
@@ -17,12 +18,13 @@ class ProfileDashboard extends Component {
     this.props.history.push("/profile");
   };
   render() {
-    const { profile, loading } = this.props;
+    const { profile, loading, openModal } = this.props;
     if (profile === undefined) {
       return <LoadingComponent />;
     }
     return (
       <ProfileDetailedHeader
+        openModal={openModal}
         AddExperience={this.AddExperience}
         profile={profile}
       />
@@ -32,5 +34,5 @@ class ProfileDashboard extends Component {
 
 export default connect(
   mapStateToProps,
-  { addExp }
+  { addExp, openModal }
 )(ProfileDashboard);

@@ -7,12 +7,14 @@ const SelectInput = ({
   placeholder,
   multiple,
   options,
+  search,
   meta: { touched, error }
 }) => {
   return (
     <Form.Field error={touched && !!error}>
       <Select
         value={input.value || null}
+        search={search}
         onChange={(e, data) => input.onChange(data.value)}
         placeholder={placeholder}
         options={options}

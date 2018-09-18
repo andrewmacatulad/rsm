@@ -6,6 +6,7 @@ import SettingsNav from "./SettingsNav";
 import AboutPage from "./AboutPage";
 import AccountPage from "./AccountPage";
 import BasicPage from "./BasicPage";
+import LoadingComponent from "../../../layout/LoadingComponent";
 // import { updatePassword } from "../../auth/authActions";
 // import { updateProfile } from "../userActions";
 
@@ -14,12 +15,15 @@ import BasicPage from "./BasicPage";
 //   updateProfile
 // };
 
-// const mapState = state => ({
-//   providerId: state.firebase.auth.providerData[0].providerId,
-//   user: state.firebase.profile
-// });
+const mapStateToProps = ({ auth, async }) => ({
+  profile: auth.user,
+  loading: async.loading
+});
 
-const SettingsDashboard = () => {
+const SettingsDashboard = ({ profile, loading }) => {
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
     <Grid>
       <Grid.Column width={12}>
@@ -27,7 +31,10 @@ const SettingsDashboard = () => {
           <Redirect exact from="/settings" to="/settings/basic" />
           <Route path="/settings/basic" render={() => <BasicPage />} />
           <Route path="/settings/about" render={() => <AboutPage />} />
-          <Route path="/settings/account" render={() => <AccountPage />} />
+          <Route
+            path="/settings/account"
+            render={() => <AccountPage profile={profile} />}
+          />
         </Switch>
       </Grid.Column>
       <Grid.Column width={4}>
@@ -37,4 +44,4 @@ const SettingsDashboard = () => {
   );
 };
 
-export default SettingsDashboard;
+export default connect(mapStateToProps)(SettingsDashboard);

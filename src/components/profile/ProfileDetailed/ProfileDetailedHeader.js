@@ -1,15 +1,35 @@
 import React from "react";
-import { Image, Segment, Item, Progress, Button } from "semantic-ui-react";
+import {
+  Image,
+  Segment,
+  Item,
+  Progress,
+  Button,
+  Label,
+  Reveal
+} from "semantic-ui-react";
 
 const src =
   "https://firebasestorage.googleapis.com/v0/b/eventsproj-ce0cf.appspot.com/o/954vMYS2XFTlfMAitiwW0rTtVbv1%2Fuser_images%2Fcjja12c6c00013a5qni179ihn?alt=media&token=3946104c-b1f0-417c-8197-3b359c579ce2";
-const ProfileDetailedHeader = ({ profile, AddExperience }) => {
+const ProfileDetailedHeader = ({ profile, AddExperience, openModal }) => {
   return (
     <Segment>
       <Item.Group>
         <Item>
-          <Item.Image src={src} />
-
+          {/* <Reveal animated="small fade">
+            <Reveal.Content visible>
+              <Item.Image src={src} />
+            </Reveal.Content>
+            <Reveal.Content hidden>
+              <Item.Image src={profile.profilePictureURL} />
+            </Reveal.Content>
+          </Reveal> */}
+          <Item.Image
+            onClick={() => openModal("ProfileImagesModal")}
+            src={profile.profilePictureURL}
+            label={{ attached: "bottom", icon: "upload" }}
+            size="medium"
+          />
           <Item.Content>
             <Item.Header as="a">{profile.name}</Item.Header>
             <Item.Meta>Description</Item.Meta>
@@ -39,7 +59,7 @@ const ProfileDetailedHeader = ({ profile, AddExperience }) => {
               </Progress> */}
               <Progress
                 size="big"
-                progress
+                progress="value"
                 active
                 value={profile.experience}
                 total={profile.exp_to_level}

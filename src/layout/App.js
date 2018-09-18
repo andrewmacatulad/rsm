@@ -27,6 +27,7 @@ import Test from "./Test";
 import LevelChecker from "./LevelChecker";
 import PartyDashboard from "../components/party/Party/PartyDashboard";
 import FriendsDashboard from "../components/friends/Friends/FriendsDashboard";
+import QuestForm from "../components/quests/QuestForm/QuestForm";
 
 class App extends Component {
   // state = { visible: false };
@@ -61,22 +62,33 @@ class App extends Component {
         <Container>
           <Switch>
             <Route exact path="/test" component={LevelChecker} />
-            <Route path="/friends" component={FriendsDashboard} />
-            <Route path="/settings" component={SettingsDashboard} />
-            <Route path="/quests" component={QuestDashboard} />
             <Route
+              path="/friends"
+              component={userIsNotAuthenticated(FriendsDashboard)}
+            />
+            <Route path="/settings" component={SettingsDashboard} />
+            <Route
+              path="/quests"
+              component={userIsNotAuthenticated(QuestDashboard)}
+            />
+            <Route
+              path="/quest/add"
+              component={userIsNotAuthenticated(QuestForm)}
+            />
+            {/* <Route
               path="/equipment"
               component={UserLevelIsNotEnough(EquipmentDashboard)}
-            />
-            <Route
-              path="/profile"
-              component={userIsNotAuthenticated(Profile)}
-            />
+            /> */}
+            <Route path="/equipment" component={EquipmentDashboard} />
+            <Route path="/profile" component={Profile} />
             <Route path="/guild" component={GuildDashboard} />
             <Route path="/login" component={SocialLogin} />
             <Route path="/photos" component={Photos} />
             <Route path="/photo" component={Photo} />
-            <Route path="/party" component={PartyDashboard} />
+            <Route
+              path="/party"
+              component={userIsNotAuthenticated(PartyDashboard)}
+            />
           </Switch>
         </Container>
       </div>

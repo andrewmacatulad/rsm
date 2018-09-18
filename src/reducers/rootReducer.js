@@ -6,6 +6,7 @@ import equipmentReducer from "../components/equipment/equipmentReducer";
 import asyncReducer from "../async/asyncReducer";
 import partyReducer from "../components/party/partyReducer";
 import friendsReducer from "../components/friends/friendsReducer";
+import questReducer from "../components/quests/questReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   async: asyncReducer,
   party: partyReducer,
   toastr: toastrReducer,
-  friends: friendsReducer
+  friends: friendsReducer,
+  quests: questReducer
 });
 
 export default rootReducer;

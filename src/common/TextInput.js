@@ -6,11 +6,17 @@ const TextInput = ({
   width,
   type,
   placeholder,
+  disabled,
   meta: { touched, error }
 }) => {
   return (
     <Form.Field error={touched && !!error} width={width}>
-      <input {...input} placeholder={placeholder} type={type} />
+      <input
+        {...input}
+        placeholder={placeholder}
+        type={type}
+        disabled={disabled}
+      />
       {touched && error && <Label color="red">{error}</Label>}
     </Form.Field>
   );

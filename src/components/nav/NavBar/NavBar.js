@@ -4,8 +4,12 @@ import { connect } from "react-redux";
 import { withRouter, NavLink, Link } from "react-router-dom";
 import SignedInMenu from "../Menus/SignedInMenu";
 import { removeUser } from "../../../auth/authActions";
+import LoadingComponent from "../../../layout/LoadingComponent";
 
-const mapStateToProps = state => ({ auth: state.auth });
+const mapStateToProps = state => ({
+  auth: state.auth,
+  loading: state.auth.isLoading
+});
 class NavBar extends Component {
   handleSignOut = () => {
     this.props.removeUser();
@@ -14,8 +18,11 @@ class NavBar extends Component {
   render() {
     const { auth } = this.props;
     // const authenticated = auth.isLoaded && !auth.isEmpty;
+    // if (!auth) {
+    //   return <h2>Loading</h2>;
+    // }
     if (!auth) {
-      return <h2>Loading</h2>;
+      return <LoadingComponent />;
     }
     return (
       <Menu stackable inverted size="massive">
@@ -24,7 +31,7 @@ class NavBar extends Component {
             RPG SOCIAL MEDIA
           </Menu.Item>
           {auth.user && auth.user ? (
-            <SignedInMenu auth={auth} signOut={this.handleSignOut} />
+            <SignedInMenu auth={auth.user} signOut={this.handleSignOut} />
           ) : (
             <Menu.Item as={NavLink} to="/login" name="Login" />
           )}

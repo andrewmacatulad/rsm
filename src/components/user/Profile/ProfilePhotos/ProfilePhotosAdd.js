@@ -15,25 +15,14 @@ import ReactAvatarEditor from "react-avatar-editor";
 import { withRouter } from "react-router-dom";
 
 import "cropperjs/dist/cropper.css";
-import LoadingComponent from "../../../layout/LoadingComponent";
-import { submitBlog, setProfilePicture } from "../../../auth/authActions";
-import { addEquipPhoto } from "../equipmentAction";
-import { openModal, closeModal } from "../../modals/modalActions";
+import LoadingComponent from "../../../../layout/LoadingComponent";
+import { closeModal } from "../../../modals/modalActions";
+import { addProfilePhoto } from "../profileActions";
 
-const equipmentType = [
-  { text: "Face", value: "face" },
-  { text: "Body", value: "body" },
-  { text: "Left Hand", value: "leftHand" },
-  { text: "Right Hand", value: "rightHand" },
-  { text: "Shoes", value: "shoes" },
-  { text: "Slippers", value: "slippers" }
-];
-
-class EquipmentAdd extends Component {
+class ProfilePhotos extends Component {
   state = {
     files: [],
     fileName: "",
-    type: "body",
     cropResult: null,
     image: {},
     allowZoomOut: false,
@@ -48,20 +37,16 @@ class EquipmentAdd extends Component {
     disableClick: false
   };
 
-  changeType = (e, { value }) => {
-    this.setState({ type: value });
-    console.log(value);
-  };
-  addEquip = async () => {
-    const { addEquipPhoto } = this.props;
+  setProfilePicture = async () => {
+    const { addProfilePhoto } = this.props;
     // console.log("Files", this.state.files);
     // console.log("Image", this.state.image);
     // console.log("Crop Result", this.state.cropResult);
     // this.cropImage();
 
-    await addEquipPhoto(this.state.image, this.state.type);
+    await addProfilePhoto(this.state.image);
     this.props.closeModal();
-    this.props.history.push("/equipment");
+    this.props.history.push("/profile");
   };
   //   handlePhotoDelete = photo => async () => {
   //     try {
@@ -71,10 +56,6 @@ class EquipmentAdd extends Component {
   //     }
   //   };
 
-  setPicture = photo => {
-    console.log(photo);
-    this.props.setProfilePicture(photo);
-  };
   cancelCrop = () => {
     this.setState({
       files: [],
@@ -105,7 +86,6 @@ class EquipmentAdd extends Component {
         image: blob
       });
     }, "image/jpeg");
-    console.log(img);
   };
 
   onDrop = files => {
@@ -117,7 +97,7 @@ class EquipmentAdd extends Component {
     });
   };
   render() {
-    const { fileImages, openModal } = this.props;
+    const { fileImages } = this.props;
     if (fileImages === undefined) {
       <LoadingComponent />;
     }
@@ -180,23 +160,11 @@ class EquipmentAdd extends Component {
                 step="0.01"
                 defaultValue="1"
               />
-
-              {/* <Button onClick={this.cropImage}>Preview</Button> */}
-              <Button onClick={() => openModal("EquipmentAddModal")}>
-                Open Modal
-              </Button>
             </div>
           )}
         </Dropzone>
-        Type of Equipment{" "}
-        <Dropdown
-          onChange={this.changeType}
-          value={this.state.type}
-          inline
-          options={equipmentType}
-        />
-        <Button onClick={this.addEquip} positive>
-          Add Equipment
+        <Button onClick={this.setProfilePicture} positive>
+          Add Profile Picture
         </Button>
       </Segment>
     );
@@ -212,6 +180,6 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { submitBlog, openModal, closeModal, setProfilePicture, addEquipPhoto }
-  )(EquipmentAdd)
+    { closeModal, addProfilePhoto }
+  )(ProfilePhotos)
 );

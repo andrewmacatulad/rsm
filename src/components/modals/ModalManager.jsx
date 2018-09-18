@@ -6,12 +6,14 @@ import LoginModal from "./LoginModal";
 // import UnauthModal from "./UnauthModal";
 import EquipmentAddModal from "./EquipmentAddModal";
 import PartyModal from "./PartyModal";
+import ProfileImagesModal from "./ProfileImagesModal";
 
 const modalLookup = {
   // TestModal,
   LoginModal,
   EquipmentAddModal,
-  PartyModal
+  PartyModal,
+  ProfileImagesModal
   // RegisterModal,
   // UnauthModal
 };
